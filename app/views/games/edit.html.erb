@@ -1,9 +1,14 @@
 
 <h1>ゲーム編集</h1>
 <%= form_for(@game) do |f| %>
-  <div><%= f.label :title %></div>
+  <div><%= f.label :タイトル %></div>
   <div><%= f.text_field :title %></div>
+  <div><%= f.label :ジャンル %></div>
+  <div><%= f.select :genre, {'RPG': 1, 'パズル': 2, 'シューティング': 3}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %></div>
+  <div><%= f.label :プレイ時間（分） %></div>
+  <div><%= number_field :play_time, min: 0, step: 1 %></div>
+  <div><%= f.label :感想 %></div>
+  <div><%=  text_field :note, min: 1, max: 1000 %></div>
   <div><%= f.submit %></div>
 <% end %>
 <%= link_to '戻る', games_path %>
-
